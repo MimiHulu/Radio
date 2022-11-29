@@ -1,0 +1,136 @@
+@charset "utf-8";
+
+
+/*maskのキーフレーム設定
+---------------------------------------------------------------------------*/
+
+@keyframes mask {  
+	  
+0%, 100% {
+	border-radius: 64% 36% 54% 46% / 49% 41% 59% 51%;
+}
+50% {
+	border-radius: 39% 61% 48% 52% / 43% 55% 45% 57%;
+}
+	  
+}
+
+
+/*kazari1のキーフレーム設定
+---------------------------------------------------------------------------*/
+@keyframes kazari1 {  
+	  
+0%, 100% {
+    border-radius: 61% 39% 65% 35% / 57% 62% 38% 43%;
+}
+50% {
+    border-radius: 41% 59% 38% 62% / 62% 41% 59% 38%;
+}
+	  
+}
+
+
+/*kazari2のキーフレーム設定
+---------------------------------------------------------------------------*/
+@keyframes kazari2 {  
+	  
+0%, 100% {
+    border-radius: 56% 44% 47% 53% / 55% 37% 63% 45%;
+}
+50% {
+    border-radius: 45% 55% 40% 60% / 44% 63% 37% 56%;
+}
+	  
+}
+
+
+/*opa1のキーフレーム設定
+---------------------------------------------------------------------------*/
+@keyframes opa1 {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+
+
+/*スライドショーのキーフレーム設定
+---------------------------------------------------------------------------*/
+@keyframes slide1 {
+	0% {opacity: 1;}
+	25%{opacity: 1;}
+	35%{opacity: 0;}
+	90% {opacity: 0;}
+	100% {opacity: 1;}
+}
+@keyframes slide2 {
+	0% {opacity: 0;}
+	25% {opacity: 0;}
+	35% {opacity: 1;}
+	60% {opacity: 1;}
+	70% {opacity: 0;}
+	100% {opacity: 0;}
+}
+@keyframes slide3 {
+	0% {opacity: 0;}
+	60% {opacity: 0;}
+	70% {opacity: 1;}
+	90% {opacity: 1;}
+	100% {opacity: 0;}
+}
+
+
+/*スライドショーの設定
+---------------------------------------------------------------------------*/
+/*スライドショーのブロック全体*/
+#mainimg {
+	width: 60%;			/*幅。お好みで調整して下さい。*/
+	position: relative;
+}
+
+/*スライドショー内の５枚の画像（スライド写真と、背景の装飾）の共通設定*/
+.slide1,.slide2,.slide3,.kazari1,.kazari2 {
+	width: 100%;height: auto;
+	position: absolute;right: 0px;top: 0px;
+}
+
+/*slide1、slide2、slide3（スライド写真）への追加設定*/
+.slide1,.slide2,.slide3 {
+	box-shadow: 4px 4px 10px rgba(0,0,0,0.2);	/*影の設定。右へ、下へ、ぼかし幅。0,0,0は黒の事で0.2は色が20%出た状態。*/
+	transform: scale(0.9);	/*実寸に対して90%のサイズで表示させる指定。原寸大がいいならこの１行を削除。*/
+	z-index: 2;	/*下の飾りより前面に表示させる指定*/
+}
+
+/*slide1への追加設定。
+slide1とmaskとopa1の３つのアニメーションを指定しています。
+sとついている数字は時間(秒)になります。お好みで調整して下さい。*/
+.slide1 {
+	animation: slide1 15s linear infinite,mask 15s linear infinite,opa1 1s linear;
+}
+
+/*slide2への追加設定
+slide2とmaskの２つのアニメーションを指定しています。
+sとついている数字は時間(秒)になります。お好みで調整して下さい。*/
+.slide2 {
+	animation: slide2 15s linear infinite,mask 15s linear infinite;
+}
+
+/*slide3への追加設定
+slide3とmaskの２つのアニメーションを指定しています。
+sとついている数字は時間(秒)になります。お好みで調整して下さい。*/
+.slide3 {
+	animation: slide3 15s linear infinite,mask 15s linear infinite;
+}
+
+/*kazari1への追加設定
+sとついている数字は時間(秒)になります。お好みで調整して下さい。*/
+.kazari1 {
+	animation: kazari1 10s linear infinite;
+	top: -30px;right: 60px;	/*上から、右からの配置場所の指定。スライド写真と位置をずらす為の設定になります。*/
+	z-index: 1;	/*kazari2より前面に表示させる指定*/
+}
+
+/*kazari2への追加設定
+sとついている数字は時間(秒)になります。お好みで調整して下さい。*/
+.kazari2 {
+	animation: kazari2 13s linear infinite;
+	top: 10px;right: -90px;	/*上から、右からの配置場所の指定。スライド写真と位置をずらす為の設定になります。*/
+}
